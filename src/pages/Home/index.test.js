@@ -21,27 +21,21 @@ describe("When Form is created", () => {
         })
       );
       await screen.findByText("En cours");
-      // await screen.findByText("Merci pour votre message");
     });
   });
-
 });
 
+// to implement
 
 describe("When a page is created", () => {
   it("a list of events is displayed", async () => {
     render(<Home />)
     const container = document.querySelector('#EventsContainer');
     const title = getByText(container, 'Nos réalisations');
-    const PDG = screen.getByText('Samira');
-    // const eventsList = queryAllByTestId(container, 'card-image-testid');
 
     expect(container).toBeInTheDocument(screen);
     expect(title).toBeInTheDocument(container);
-    // expect(container.queryByText("Samira")).not.toBeInTheDocument(container);
-    // expect(screen.queryByText("modal content")).not.toBeInTheDocument();
     
-    // expect(eventsList.length).toBeGreaterThan(1);
   })
   it("a list a people is displayed", () => {
     
@@ -54,10 +48,8 @@ describe("When a page is created", () => {
     
   })
   it("a footer is displayed", async () => {
-    // to implement tester la presence des rubrique notre dernière presta, contactez nous et logo 77events
     render(<Home />);
     const container = document.querySelector('#footer');
-    // const eventsContainer = document.querySelector('#EventsContainer');
     const lastPrestaTitle = queryByText(container,'Notre derniére prestation');
     const contactTitle = queryByText(container, 'Contactez-nous');
     const descriptionLogo = queryByTestId(container, 'logo-testid');
@@ -67,13 +59,11 @@ describe("When a page is created", () => {
     expect(descriptionLogo).toBeInTheDocument();
   })
   it("an event card, with the last event, is displayed", async () => {
-    // to implement tester la présence d'une image la div last event + l'image doit correspondre a l'event le plus recent de la data
     render(<Home />);
     const container = document.querySelector('#footer');
     const titleLastPresta = queryByText(container,'Notre derniére prestation');
     
     expect(titleLastPresta).toBeInTheDocument();
     expect(container).toBeInTheDocument();
-    // mock la data 
   })
 });
