@@ -14,9 +14,6 @@ const EventList = () => {
   const { data, error } = useData();
   const [type, setType] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
-  // console.log(currentPage)
-  // console.log(data)
-  // console.log(type)
   const filteredEvents = (
     (!type
       ? data?.events
@@ -58,7 +55,7 @@ const EventList = () => {
             onChange={(value) => (value ? changeType(value) : changeType(null))}
           />
           <div id="events" className="ListContainer">
-            {filteredEvents.map((event) => ( // problème la
+            {filteredEvents.map((event) => (
               <Modal key={event.id} Content={<ModalEvent event={event} />}>
                 {({ setIsOpened }) => (
                   <EventCard
@@ -87,5 +84,3 @@ const EventList = () => {
 };
 
 export default EventList;
-
-// problème : filteredEvents ne change pas quand on change le choix de catégorie
