@@ -11,6 +11,9 @@ const Slider = () => {
     new Date(evtA.date) > new Date(evtB.date) ? -1 : 1
   );
   const nextCard = () => {
+    if (byDateDesc === undefined){
+      return
+    }
     setTimeout(
       () => setIndex(index < byDateDesc.length - 1 ? index + 1 : 0),
       5000
@@ -22,9 +25,8 @@ const Slider = () => {
   return (
     <div className="SlideCardList">
       {byDateDesc?.map((event, idx) => (
-        <>
+        <div key={`${event.id}- ${event.title}`}>
           <div
-            key={event.title}
             className={`SlideCard SlideCard--${
               index === idx ? "display" : "hide"
             }`}
@@ -42,23 +44,19 @@ const Slider = () => {
             <div className="SlideCard__pagination">
               {byDateDesc.map((_, radioIdx) => (
                 <input
-                  key={`${event.id}`}
+                  key={`${_.description}`}
                   type="radio"
                   name="radio-button"
+                  readOnly
                   // checked={idx === radioIdx} ancienne ligne
                   checked={index === radioIdx}
                 />
               ))}
             </div>
           </div>
-        </>
+        </div>
       ))}
     </div>
   );
 };
-
 export default Slider;
-
-// prob : la state de slide passe à 4 alors qu'on a seulement 3 éléments 
-// + 
-// on utilise pas la state pour changer de point
